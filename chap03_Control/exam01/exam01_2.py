@@ -18,4 +18,13 @@ age = int(input("나이를 입력하세요: "))
 
 ticket_price = 10000 # 기본 티켓 요금 
 
+if age >= 65 :
+    print('노인할인: {0:3,d} 입니다.'.format(0.3*ticket_price))
+elif age < 18 and age >=7 :
+    print('청소년 할인: {0:3,d} 입니다.'.format(0.5*ticket_price))
+elif age < 7 :
+    print('무료입니다.')
+else: 
+    print(f'{ticket_price} 입니다.')
+    print('{0:3,d}원입니다. '.format(ticket_price))
 
