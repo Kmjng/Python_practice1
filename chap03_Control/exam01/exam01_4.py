@@ -16,8 +16,15 @@ step01 관련 문제
 snow = int(input('눈 여부(1 or 0) : ')) 
 umbrella = int(input('우산 여부(1 or 0) : ')) 
 
-
-
+if snow == 0 and (umbrella ==0 or umbrella ==1):
+    print('외출한다.')
+elif snow == 1 and (umbrella ==0 or umbrella ==1):
+    if umbrella == 0 :
+        print('잠시 기다린다.')
+    else: 
+        print('외출한다.')
+else: 
+    print('다시 입력하세요.')
 
 
 
