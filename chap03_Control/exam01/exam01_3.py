@@ -16,4 +16,9 @@ step01 관련 문제
      총 결제 금액: 45,000원
 """
 
-order_amount = float(input("주문 금액을 입력하세요: "))
+order_amount = int(input("주문 금액을 입력하세요: "))
+
+if order_amount >= 50000:
+    print('할인 금액: {0:3,d}원\n총 결제 금액: {1:3,d}원'.format(int(order_amount*0.1), int(order_amount*0.9)))
+else :
+    print('할인 없음\n총 결제 금액: {0:3,d}'.int(format(order_amount)))
