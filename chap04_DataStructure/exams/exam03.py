@@ -10,3 +10,13 @@ step04 + step05 문제
 
 position = ['과장', '부장', '대리', '사장', '대리', '과장'] # list 
 
+print(set(position))
+
+print(type(position)) # class 'list'
+
+cnt ={}
+for i in position : 
+    cnt[i] = cnt.get(i,0) +1 
+    # cnt 딕트에 i 라는 key를 넣고 = value 삽입
+
+print(cnt)
