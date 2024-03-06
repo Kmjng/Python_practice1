@@ -17,3 +17,17 @@ price = {'사과':2000, '복숭아' : 3000, '딸기' : 2500}
 buy = {'사과' : 3, '딸기' : 5}
 
 # 구매 상품 총 금액
+# 방법 1) 
+tot_bill={}
+for i, j in price.items():
+    tot= price.get(i,0)*buy.get(i,0) 
+    # 주의: tot=price[i]+buy[i] 는 키가 없는 경우 안됨 .
+    tot_bill[i]=tot
+
+print(tot_bill)
+print('총 금액: {0:3,d}'.format(sum(tot_bill.values())))
+
+# 방법 2) 
+tot_bill2 = [ price[i]*buy[i] for i in buy.keys() ]
+print(tot_bill2)
+print('총 금액: {0:3,d}'.format(sum(tot_bill2)))
