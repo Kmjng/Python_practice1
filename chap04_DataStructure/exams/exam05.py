@@ -11,3 +11,10 @@ step05 문제
 
 movie = {'광해' : [9.24, 1200], '공작' : [7.86, 500], '관상' : [8.01, 900]}
 
+tot_info ={}
+tot =0
+for i, j in movie.items():
+    if j[0]>=8:
+        print(f"영화제목: {i}")
+        tot += j[1]
+print(f'누적 관객수 = {tot}')
