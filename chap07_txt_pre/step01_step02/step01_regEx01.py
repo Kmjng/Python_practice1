@@ -152,25 +152,38 @@ for i in tags:
 
 re.findall('<li>.+</li>',tags) # . 은 임의의 문자, +는 하나 이상
 
-
+re.findall('<li>[가-힣]+</li>',tags) # ['<li>첫번째목록</li>', '<li>세번째목록</li>']
 
 # 2. re.match(pattern, string) 
-# - 패턴과 일치하는 문자열 이면 객체 반환(불일치 NULL 반환) 
+# re.match() 로 객체 찾고, group()로 반환한다. ★★★★
 
+# - 패턴과 일치하는 문자열 이면 객체 반환(불일치 NULL 반환) 
+# 용도 : 유효성 검사 (주민번호, 이메일 형식 검사  )
 jumin = '123456-3234567'
 
 result = re.match('\d{6}-[1-4]\d{6}', jumin) 
-# 패터 일치 여부 반환 : 일치 -> object 반환, 불일치 -> NULL 반환 
+# \d{6} : digit 6개
+# [1-4] 1~4 중 하나 
 
-print(result) # <re.Match object; span=(0, 14), match='123456-3234567'>
+# 패턴 일치 여부 반환 : 일치 -> object 반환, 불일치 -> None 반환 
+
+print(result) # >> <re.Match object; span=(0, 14), match='123456-3234567'>
+# span은 패턴과 일치되는 '색인 범위'
+# match : 패턴과 일치되는 '문자열'
+# group() : 패턴과 일치하는 문자열 반환
 
 # 매칭된 텍스트 반환 
 result.group() # '123456-3234567'
 
 
-if result : # object 반환 : True,  None : False 
+jumin2 = '123456-5234567' #뒷 6자리의 앞자리가 5
+result2 = re.match('\d{6}-[1-4]\d{6}', jumin2) 
+
+if result2 : # 객체 반환되면 True, None이면 False 
     print('주민번호 양식')
+    result.group()
 else :
     print('잘못된 양식')
 
-
+print(result2) # >> None 
+print(result2.group()) # >> AttributeError: 'NoneType' object has no attribute 'group'
