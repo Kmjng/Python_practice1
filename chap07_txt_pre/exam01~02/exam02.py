@@ -26,7 +26,16 @@ emails =  ['hong@12.com', 'you2@naver.com', '12kang@hanmail.net', 'kimjs@gmail.c
 
 # 올바른 이메일 저장 
 right_emails = [] 
+right = '^[a-z]\w{3,}@[a-z]\w{2,}.[a-z]{3}'
 
+
+for i in emails:
+    result = re.match(right, i)
+    if result : 
+        right_emails.append(result.group()) 
+    else : 
+        pass 
+print(right_emails)
 
 
 
