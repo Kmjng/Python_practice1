@@ -42,20 +42,84 @@ def clean_text(texts) : # list input
     return texts_re4
 
 
-
+import re 
 # 1.파일 읽기 : obama.txt
-path = r'C:\ITWILL\2_Python\workspace\chap06_try_FileIO\data'
-rfile = open(path + '/obama.txt', mode = 'r') 
+path = r'C:\ITWILL\2_Python\workspace\Python_practice1\chap06_File\data'
+
+with open(path+'\obama.txt', mode = 'r') as rfile :
+    lines = rfile.readlines()
 
 
 # 2. 줄단위 전체 읽기 
+print(lines)
 
 # 3.줄 단위 텍스트 전처리         
+def text_pre(texts): 
+    texts= [i.strip() for i in texts] 
+    texts1 = [i.lower() for i in texts]
+    texts2 = [re.sub(r'[^\w\d\s]','',i) for i in texts1] #  앞에 r붙는 것은 이스케이프 문자가 아니라 메타문자라는 것을 명시하기 위해  
+    # texts2 = [re.sub('\n','',i) for i in texts1] 왜 대체안되는지 아직 모르겠지만, 일단 먼저 줄바꿈 자체를 제거해줘야함..
+    
+    return texts2
+
+result_line = text_pre(lines)
+print(result_line)
+# >> ['', ' obama hello skybrook', '', 'applause', '', 'its good to be home', '', 'applause', '', 'thank you everybody',....]
 
 # 4. 단어 카운트 : 전체 단어수 & 최고 단어 
-    
+words = {} 
+for i in result_line:
+    for j in i.split():
+        words[j] = words.get(j, 0) +1  #나는 한번에 해서 중복단어가 빠짐!!!!
+print(words)
+
+words_sorted = sorted(words,key = words.get, reverse = True)   # value로 정렬할거임
+print(words_sorted)
+
+words_max = max(words, key = words.get) # 이때 key반환됨
+print('전체단어수:',len(words),'\n최빈단어:', words_max) # 중복단어가 빠져서 전체단어수 1430 개, 최빈단어: the
+
+# 최빈단어의 수는 max()해서 value값 가져와야함. 
+words_max2 = max(words.items(), key = lambda x : x[1]) # x[1] value기준, x[0] key 기준
+print(words_max2) # >> ('the', 206)   type tuple 
+
 # 5. Top10 단어 & 단어 빈도수 
- 
+top_10  = words_sorted[:9]
+print(top_10) # >> ['the', 'and', 'of', 'to', 'our', 'that', 'you', 'a', 'we']
+
+for i in top_10 : 
+    print(f"{i}: {words[i]}") # key가 i랑 일치하는 ~
+'''
+the: 206
+and: 195
+of: 152
+to: 140
+our: 109
+that: 91
+you: 83
+a: 83
+we: 81
+
+'''
+
+
+# test....
+
+st1 = r'asdf\n'
+print(st1) # >> asdf\n
+print(re.sub(r'\\n','',st1)) # >> asdf
+
+st2 = 'asdf\nqwer' # 이스케이프문자
+print(st2) # >> asdf    qwer
+print(re.sub(r'\n','',st2)) # >> asdfqwer
+print(re.sub(r'\n','',st2)) # >> asdfqwer
+
+# test2 
+st3 = '라가나다'
+print(re.findall('[나가]',st3)) # >> ['가', '나'] 
+print(re.findall('가나',st3)) # >> ['가나']
+# test3 
+
 
 
 
