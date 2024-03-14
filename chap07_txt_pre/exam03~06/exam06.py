@@ -166,4 +166,23 @@ print("최고단어: ", max(words_cnt, key=words_cnt.get))
 for i in top_10 : 
     print(i, words_cnt[i], sep='->')
 
+'''
+lambda 함수 활용 딕셔너리 정렬 
+'''
+test1 = {'1':'b', '2':'z', '3':'x','5':'t','9':'a','7':'a'}
 
+
+
+t = sorted(test1, key = lambda x : x[0], reverse = False) 
+print(t) # >> ['1', '2', '3', '5', '7', '9']
+
+t1 = sorted(test1, key =test1.get, reverse = False) # value 정렬 - .get 메소드로 value 가져옴
+print(t1) # >> ['9', '7', '1', '5', '3', '2']
+
+t2 = sorted(test1.items(), key = lambda x : x[1], reverse = False) # value 정렬 - items()로 value 가져옴
+print(t2) # >> [('9', 'a'), ('7', 'a'), ('1', 'b'), ('5', 't'), ('3', 'x'), ('2', 'z')]
+    
+t3 = sorted(test1.items(), key = lambda x : (x[1],x[0]) , reverse = False) # value, key 정렬 - items()로 value 가져옴
+print(t3) # >> [('7', 'a'), ('9', 'a'), ('1', 'b'), ('5', 't'), ('3', 'x'), ('2', 'z')]
+    # lambda 안에 괄호는 매개변수 감싸는 용도임
+    
