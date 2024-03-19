@@ -1,0 +1,85 @@
+문제 1. 
+result = num*2 if num >= 5 else num+2
+
+문제 2. 
+gender = ['남','여']
+
+문제 3. 
+6
+
+문제 4. 
+x = x+y
+
+문제 5. 
+for i in doc.split(sep=' '):
+    word.append(i)
+
+문제 6. 
+dic 자료구조는 키(key)와 그에 대응하는 값(value)가 할당되어 저장된다. 
+딕셔너리의 특징은 인덱스가 따로 부여되지 않고 키(key)가 그 역할을 하며, 
+value는 중복가능하나, key는 중복될경우 값을 덮어쓰게 된다. 
+
+문제 7. 
+calc = lambda x, y : x-y 
+
+문제 8. 
+def userFunc(x): 
+    tot = sum(x)
+    avg = tot/len(x)
+    return tot, avg
+
+문제 9. 
+맴버변수: width, height 
+맴범메소드: area_calc, circum_calc 
+
+문제 10. 
+파이썬의 변수는 값을 저장하는 것이 아닌 값을 저장한 주소를 할당받기 때문이다.
+
+문제 11. 
+파일 쓰기용(write)
+파일 내용 추가용(append)
+
+문제 12. 
+word_cnt 딕셔너리의 키(ch)의 값에 접근하고 싶을 때 get함수를 쓰며, 
+0은 키가 없는 경우 해당 키에 값0 을 할당한다. 
+
+문제 13. 
+readline() 함수는 txt파일의 한줄씩 읽기 때문에 string 형이고 
+readlines()함수는 txt파일의 \n 마다 끊어서 리스트에 저장해 반환한다. 
+
+문제 14. 
+conn 은 mysql에 접근(연결)할 때 사용되는 객체 
+cursor 는  sql문을 실행할 때 필요한 객체
+
+문제 15. 
+try 이하 문을 실행하고, 예외적인 상황을 만났을 때 except문을 실행한다. 
+예시 : 
+x = 10 
+y = 0
+
+try : 
+    z = x / y 
+    print(z)
+except ZeroDivisionError as e: 
+    print('0으로 나눌 수 없습니다. ', e)
+
+문제 16. 
+나.
+
+문제 17. 
+class userClass :
+ 
+    # 생성자 : 객체 생성, x변수 초기화 
+    def __init__(self, x):
+        self.x = x
+    # 총점 계산 함수 
+    def tot_func(self):
+        return sum(x)
+    # 평균 계산 함수 
+    def avg_func(self):
+        return sum(x)/len(x)
+x = [1 ,3, 5, 7, 9, 11]
+obj = userClass(x)   
+print('tot =', obj.tot_func()) #tot = 36
+print('avg =', obj.avg_func())#avg = 6.0
+
